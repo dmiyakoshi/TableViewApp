@@ -66,14 +66,10 @@ class TableViewController: UITableViewController {
         return cell
     }
     
-    func tableViewDelete(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
-
-       
+    override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
+        
                 taskArray.remove(at: indexPath.row)
                 tableView.deleteRows(at: [indexPath], with: .fade)
-            // 先にデータを削除しないと、エラーが発生します。
-//            self.tableData.remove(at: indexPath.row)
-//            tableView.deleteRows(at: [indexPath], with: .automatic)
         }
 
     /*
