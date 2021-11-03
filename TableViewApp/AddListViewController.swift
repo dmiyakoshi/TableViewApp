@@ -24,13 +24,6 @@ class AddListViewController: UIViewController {
         
         storeButton.isEnabled = false
     }
-    @IBAction func chaeckText(_ sender: Any) {
-        if addTextField.text == "" {
-                storeButton.isEnabled = false
-            } else {
-                storeButton.isEnabled = true
-            }
-    }
     
     @IBAction func addTask(_ sender: Any) {
         let userDefaults = UserDefaults.standard
