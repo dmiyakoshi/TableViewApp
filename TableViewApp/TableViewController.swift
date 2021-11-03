@@ -23,7 +23,6 @@ class TableViewController: UITableViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
         // Uncomment the following line to preserve selection between presentations
         // self.clearsSelectionOnViewWillAppear = false
 
@@ -39,7 +38,6 @@ class TableViewController: UITableViewController {
         if userDefaults.object(forKey: "add") != nil {
             taskArray = userDefaults.object(forKey: "add") as! [String]
         }
-        
         tableView.reloadData() //テーブルビューを再読み込み
     }
     // MARK: - Table view data source
@@ -66,14 +64,13 @@ class TableViewController: UITableViewController {
         return cell
     }
     
-    func tableViewDelete(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
-
-       
-                taskArray.remove(at: indexPath.row)
-                tableView.deleteRows(at: [indexPath], with: .fade)
-            // 先にデータを削除しないと、エラーが発生します。
-//            self.tableData.remove(at: indexPath.row)
-//            tableView.deleteRows(at: [indexPath], with: .automatic)
+    override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
+        
+        let userDefaults = UserDefaults.standard
+        
+        taskArray.remove(at: indexPath.row)
+        tableView.deleteRows(at: [indexPath], with: .fade)
+        userDefaults.set(taskArray, forKey: "add")
         }
 
     /*
